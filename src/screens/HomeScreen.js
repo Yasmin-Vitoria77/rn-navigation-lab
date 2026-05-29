@@ -1,6 +1,8 @@
+import { useState, useEffect } from 'react';
+
 // TODO: estilizar esta tela com as cores e identidade visual do seu tema
 // TODO: importar useState e useEffect — adicione a linha abaixo no topo:
-// import { useState, useEffect } from 'react';
+
 import {
   FlatList,
   SafeAreaView,
@@ -72,10 +74,10 @@ const jogos = [
 // TODO: adicionar { navigation } como parametro quando a navegacao estiver configurada
 export default function HomeScreen() {
   // TODO: estado para o texto digitado na busca
-  // const [busca, setBusca] = useState('');
+  const [busca, setBusca] = useState('');
 
   // TODO: estado com os jogos exibidos na lista — inicia com todos
-  // const [jogosFiltrados, setJogosFiltrados] = useState(jogos);
+  const [jogosFiltrados, setJogosFiltrados] = useState(jogos);
 
   // TODO: filtrar os jogos sempre que o valor de 'busca' mudar
   // useEffect(() => {
@@ -121,14 +123,14 @@ export default function HomeScreen() {
           style={styles.buscaInput}
           placeholder="Buscar jogo..."
           placeholderTextColor="#999"
-          // value={busca}
-          // onChangeText={setBusca}
+          value={busca}
+          onChangeText={setBusca}
         />
       </View>
 
       {/* TODO: trocar data={jogos} por data={jogosFiltrados} apos implementar o estado */}
       <FlatList
-        data={jogos}
+        data={jogosFiltrados}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
         contentContainerStyle={styles.lista}
